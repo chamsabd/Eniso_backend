@@ -27,6 +27,10 @@ public class Matiere {
 	Module module;
 	String departement;
 
+	@ManyToOne
+    @JoinColumn(name="prof_id")
+    private User prof;
+
 	
 	
 }

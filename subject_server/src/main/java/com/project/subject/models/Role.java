@@ -8,8 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
-@Entity
+
 public class Role {
  @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -17,7 +18,7 @@ public class Role {
   
 
   private ERole name;
-@ManyToMany(mappedBy = "roles")
+  @OneToMany(mappedBy = "role")
     private Set<User> users = new HashSet<>();
   public Role() {
 
