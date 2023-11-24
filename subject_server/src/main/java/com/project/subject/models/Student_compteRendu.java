@@ -6,12 +6,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Etudient_compteRendu {
+public class Student_compteRendu {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	 Long id;
+      @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "compterendu_id")
+    private CompteRendu compterendu;
+
     Date date_ajout;
     float note;
     String commentaire;

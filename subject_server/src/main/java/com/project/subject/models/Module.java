@@ -3,13 +3,16 @@ package com.project.subject.models;
 import java.io.Serializable;
 import java.util.Set;
 
+import org.apache.tomcat.jni.Library;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 
@@ -24,6 +27,12 @@ public class Module implements Serializable{
 	 Long id;
 	@NotNull(message="name  cannot be null")
 	String nom;
+
+@ManyToOne
+    @JoinColumn(name="niveau_id")
+    private Niveau niveau;
+
+
 	 @OneToMany(mappedBy = "module", fetch = FetchType.LAZY,
 	            cascade = CascadeType.ALL)
 	  Set<Matiere> matieres;
