@@ -11,6 +11,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
+import lombok.*;
+@Getter
+@Setter
+
+@NoArgsConstructor
+@AllArgsConstructor  
 @Entity
 public class Niveau {
    @Id
@@ -18,12 +24,10 @@ public class Niveau {
 	 Long id;
    String niveau; 
 @ManyToOne
-    @JoinColumn(name="department_id")
-   private Departement department;
-
+    @JoinColumn(name="departement_id")
+   private Departement departement;
    @OneToMany(mappedBy = "niveau")
-    private  Set<Student_Niveau> student_niveau = new HashSet<>();
-
+    private  Set<StudentNiveau> studentniveau ;
     @OneToMany(mappedBy = "niveau")
     private Set<Module> modules;
 

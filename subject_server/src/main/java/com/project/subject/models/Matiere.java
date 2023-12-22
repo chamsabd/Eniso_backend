@@ -17,6 +17,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.*;
 
+import lombok.*;
+@Getter
+@Setter
+
+@NoArgsConstructor
+@AllArgsConstructor  
 @Entity
 public class Matiere {
 	@Id

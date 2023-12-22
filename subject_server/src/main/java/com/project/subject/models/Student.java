@@ -11,10 +11,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-
+import lombok.*;
 @Entity
+@Getter
+@Setter
 
-	  
+@NoArgsConstructor
+@AllArgsConstructor    
 @DiscriminatorValue("ROLE_STUDENT")
 public class Student  extends User{
      @ManyToMany(cascade = CascadeType.ALL)
@@ -25,9 +28,9 @@ public class Student  extends User{
     private Set<Matiere> matieres;
 
 @OneToMany(mappedBy = "student")
-    private Set<Student_compteRendu> StudentCompteRendu = new HashSet<>();
+    private Set<StudentCompteRendu> studentcompterendu = new HashSet<>();
 
 
     @OneToMany(mappedBy = "student")
-    private Set<Student_Niveau> student_niveau = new HashSet<>();
+    private Set<StudentNiveau> student_niveau = new HashSet<>();
 }

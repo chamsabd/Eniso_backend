@@ -9,8 +9,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+import lombok.*;
+@Getter
+@Setter
+
+@NoArgsConstructor
+@AllArgsConstructor  
 @Entity
-public class Student_compteRendu {
+public class StudentCompteRendu {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	 Long id;
@@ -22,7 +28,7 @@ public class Student_compteRendu {
     @JoinColumn(name = "compterendu_id")
     private CompteRendu compterendu;
 
-    Date date_ajout;
+    Date dateajout;
     float note;
     String commentaire;
     String path;

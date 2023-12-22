@@ -9,6 +9,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+
+import lombok.*;
+@Getter
+@Setter
+
+@NoArgsConstructor
+@AllArgsConstructor  
 @Entity
 public class Support {
     @Id
@@ -21,5 +28,5 @@ public class Support {
 
 String path;
 String nom;
-Date date_ajout;
+Date dateajout;
 }

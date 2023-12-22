@@ -32,7 +32,7 @@ String title;
 Date date_creation;
 Date date_fermeture;
 @OneToMany(mappedBy = "compterendu")
-    private  Set<Student_compteRendu> StudentCompteRendu = new HashSet<>();
+    private  Set<StudentCompteRendu> StudentCompteRendu = new HashSet<>();
 
 @ManyToOne
     @JoinColumn(name="matiere_id")

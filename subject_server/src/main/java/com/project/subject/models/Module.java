@@ -3,7 +3,6 @@ package com.project.subject.models;
 import java.io.Serializable;
 import java.util.Set;
 
-import org.apache.tomcat.jni.Library;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -16,6 +15,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 
+import lombok.*;
+@Getter
+@Setter
+
+@NoArgsConstructor
+@AllArgsConstructor  
 @Entity
 public class Module implements Serializable{
 	/**

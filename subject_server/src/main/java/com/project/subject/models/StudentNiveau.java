@@ -8,8 +8,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+
+import lombok.*;
+@Getter
+@Setter
+
+@NoArgsConstructor
+@AllArgsConstructor  
 @Entity
-public class Student_Niveau {
+public class StudentNiveau {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	 Long id;
