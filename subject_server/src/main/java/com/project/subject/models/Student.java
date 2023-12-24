@@ -33,4 +33,14 @@ public class Student  extends User{
 
     @OneToMany(mappedBy = "student")
     private Set<StudentNiveau> student_niveau = new HashSet<>();
+
+
+    public Student(Long id, String avatar, int ncin, String nom, String prenom, String email, String password) {
+      super(id, avatar, ncin, nom, prenom, email, password);
+    }
+
+
+
+
+    
 }

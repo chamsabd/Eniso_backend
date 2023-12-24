@@ -25,4 +25,14 @@ public class Prof extends User {
    @ManyToOne
     @JoinColumn(name="departement_id")
    private Departement departement;
+
+  public Prof(Long id, String avatar, int ncin, String nom, String prenom, String email, String password,
+      Departement departement) {
+    super(id, avatar, ncin, nom, prenom, email, password);
+    this.departement = departement;
+  }
+
+
+
+   
 }

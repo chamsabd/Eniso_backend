@@ -32,6 +32,7 @@ public class Matiere {
 	String nom;
 	double credit ;
 	double VH ;
+	
 	@ManyToOne
     @JoinColumn(name="module_id")
 	@NotNull(message="please select the model name")
