@@ -3,18 +3,26 @@ package com.project.subject.models;
 import java.io.Serializable;
 import java.util.Set;
 
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 
+import lombok.*;
+@Getter
+@Setter
+
+@NoArgsConstructor
+@AllArgsConstructor  
 @Entity
-public class UE implements Serializable{
+public class Module implements Serializable{
 	/**
 	 * 
 	 */
@@ -24,15 +32,21 @@ public class UE implements Serializable{
 	 Long id;
 	@NotNull(message="name  cannot be null")
 	String nom;
-	 @OneToMany(mappedBy = "book", fetch = FetchType.LAZY,
+
+@ManyToOne
+    @JoinColumn(name="niveau_id")
+    private Niveau niveau;
+
+
+	 @OneToMany(mappedBy = "module", fetch = FetchType.LAZY,
 	            cascade = CascadeType.ALL)
-	  Set<Subject> subjects;
+	  Set<Matiere> matieres;
 	 
 	@Override
 	public String toString() {
-		return "UE [id=" + id + ", nom=" + nom + ", subjects=" + subjects + "]";
+		return "UE [id=" + id + ", nom=" + nom + ", subjects=" + matieres + "]";
 	}
-	public UE(@NotNull(message = "name  cannot be null") String nom) {
+	public Module(@NotNull(message = "name  cannot be null") String nom) {
 		super();
 		this.nom = nom;
 	}
@@ -48,11 +62,11 @@ public class UE implements Serializable{
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public Set<Subject> getSubjects() {
-		return subjects;
+	public Set<Matiere> getSubjects() {
+		return matieres;
 	}
-	public void setSubjects(Set<Subject> subjects) {
-		this.subjects = subjects;
+	public void setSubjects(Set<Matiere> subjects) {
+		this.matieres = subjects;
 	}
 
 
