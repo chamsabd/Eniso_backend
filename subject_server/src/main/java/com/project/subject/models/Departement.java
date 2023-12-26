@@ -17,7 +17,8 @@ import lombok.*;
 @AllArgsConstructor  
 @Entity
 public class Departement {
-   @Id
+  
+@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	 Long id;
     String titre;
@@ -25,5 +26,8 @@ public class Departement {
    private Set<Niveau> niveaux;
     @OneToMany(mappedBy = "departement")
    private Set<Prof> profs;
+   public Departement(String titre) {
+      this.titre = titre;
+   }
     
 }

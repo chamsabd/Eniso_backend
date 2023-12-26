@@ -33,12 +33,12 @@ public class Module implements Serializable{
 	@NotNull(message="name  cannot be null")
 	String nom;
 
-@ManyToOne
+@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="niveau_id")
     private Niveau niveau;
 
 
-	 @OneToMany(mappedBy = "module", fetch = FetchType.LAZY,
+	 @OneToMany(mappedBy = "module", 
 	            cascade = CascadeType.ALL)
 	  Set<Matiere> matieres;
 	 

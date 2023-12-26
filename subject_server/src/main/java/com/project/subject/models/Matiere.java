@@ -6,7 +6,7 @@ import java.util.Set;
 
 import org.apache.tomcat.jni.Library;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,20 +33,20 @@ public class Matiere {
 	double credit ;
 	double VH ;
 	
-	@ManyToOne
+	@ManyToOne()
     @JoinColumn(name="module_id")
 	@NotNull(message="please select the model name")
 	Module module;
 	
 
-	@ManyToOne
+	@ManyToOne()
     @JoinColumn(name="prof_id")
-    private User prof;
-@ManyToMany(mappedBy = "matieres")
+    private Prof prof;
+@ManyToMany(mappedBy = "matieres",cascade = CascadeType.ALL)
     private Set<Student> students;
-	@OneToMany(mappedBy = "matiere")
+	@OneToMany(mappedBy = "matiere",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Support> supports;
 
-	@OneToMany(mappedBy = "matiere")
+	@OneToMany(mappedBy = "matiere",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CompteRendu> compterendus;
 }

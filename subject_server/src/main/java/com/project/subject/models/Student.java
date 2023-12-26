@@ -27,11 +27,11 @@ public class Student  extends User{
       referencedColumnName = "id"))
     private Set<Matiere> matieres;
 
-@OneToMany(mappedBy = "student")
+@OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private Set<StudentCompteRendu> studentcompterendu = new HashSet<>();
 
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private Set<StudentNiveau> student_niveau = new HashSet<>();
 
 

@@ -3,6 +3,7 @@ package com.project.subject.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,10 +24,10 @@ public class Niveau {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	 Long id;
    String niveau; 
-@ManyToOne
+@ManyToOne()
     @JoinColumn(name="departement_id")
    private Departement departement;
-   @OneToMany(mappedBy = "niveau")
+   @OneToMany(mappedBy = "niveau", cascade = CascadeType.ALL)
     private  Set<StudentNiveau> studentniveau ;
     @OneToMany(mappedBy = "niveau")
     private Set<Module> modules;
