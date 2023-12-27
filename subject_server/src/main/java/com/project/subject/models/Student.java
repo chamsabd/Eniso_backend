@@ -22,7 +22,7 @@ import lombok.*;
 @AllArgsConstructor    
 @DiscriminatorValue("ROLE_STUDENT")
 public class Student  extends User{
-  @JsonIgnore  
+   
   @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "matiere_student", 
       inverseJoinColumns = @JoinColumn(name = "matiere_id", referencedColumnName = "id"), 

@@ -26,10 +26,10 @@ public class Departement {
 	 Long id;
     String titre;
      
-    @JsonManagedReference  @OneToMany(mappedBy = "departement")
+    @JsonIgnore  @OneToMany(mappedBy = "departement")
    private Set<Niveau> niveaux;
  
-    @JsonManagedReference  @OneToMany(mappedBy = "departement")
+   @JsonIgnore  @OneToMany(mappedBy = "departement")
    private Set<Prof> profs;
    public Departement(String titre) {
       this.titre = titre;

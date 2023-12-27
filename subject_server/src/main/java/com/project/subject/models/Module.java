@@ -36,12 +36,12 @@ public class Module implements Serializable{
 	@NotNull(message="name  cannot be null")
 	String nom;
 
-@JsonBackReference  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="niveau_id")
     private Niveau niveau;
 
 
-	 @JsonManagedReference  @OneToMany(mappedBy = "module", 
+	@JsonIgnore  @OneToMany(mappedBy = "module", 
 	            cascade = CascadeType.ALL)
 	  Set<Matiere> matieres;
 	 

@@ -24,10 +24,9 @@ import lombok.*;
 @DiscriminatorValue("ROLE_PROF")
 public class Prof extends User {
   
- @JsonManagedReference @OneToMany(mappedBy = "prof",cascade = CascadeType.ALL)
+  @JsonIgnore @OneToMany(mappedBy = "prof",cascade = CascadeType.ALL)
    private Set<Matiere> matieres;
-
-   @JsonBackReference  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="departement_id")
    private Departement departement;
 

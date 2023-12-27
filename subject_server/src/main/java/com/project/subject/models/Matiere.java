@@ -40,23 +40,23 @@ public class Matiere {
 	double credit ;
 	double VH ;
 	
-	@JsonBackReference  @ManyToOne()
+	  @ManyToOne()
     @JoinColumn(name="module_id")
 	@NotNull(message="please select the model name")
 	Module module;
 	
 
-	@JsonBackReference  @ManyToOne(fetch = FetchType.LAZY)
+	 @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="prof_id")
     private Prof prof;
 	
-@JsonBackReference  @ManyToMany(mappedBy = "matieres",cascade = CascadeType.ALL)
+@JsonIgnore  @ManyToMany(mappedBy = "matieres",cascade = CascadeType.ALL)
     private Set<Student> students;
 	
-	@JsonManagedReference  @OneToMany(mappedBy = "matiere",cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore  @OneToMany(mappedBy = "matiere",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Support> supports;
 
-	@JsonManagedReference  @OneToMany(mappedBy = "matiere",cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore @OneToMany(mappedBy = "matiere",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CompteRendu> compterendus;
 
 	

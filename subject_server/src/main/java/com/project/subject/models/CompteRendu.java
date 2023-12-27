@@ -36,10 +36,10 @@ String title;
 Date date_creation;
 Date date_fermeture;
 
-@JsonManagedReference  @OneToMany(mappedBy = "compterendu")
+@JsonIgnore  @OneToMany(mappedBy = "compterendu")
     private  Set<StudentCompteRendu> StudentCompteRendu = new HashSet<>();
 
-@JsonBackReference  @ManyToOne
+ @ManyToOne
     @JoinColumn(name="matiere_id")
     private Matiere matiere;
 
