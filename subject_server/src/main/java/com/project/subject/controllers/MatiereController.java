@@ -37,9 +37,14 @@ public class MatiereController {
     @Autowired
 	private MatiereService mrepo;
 	
-	 class MC {
-	 Long idDepartement;
-Long idNiveau;	
+	public static class MC {
+	public Long idDepartement;
+public Long idNiveau;
+public MC(Long idDepartement, Long idNiveau) {
+	this.idDepartement = idDepartement;
+	this.idNiveau = idNiveau;
+}	
+
 	}
 
 	 @PostMapping("/")
