@@ -3,6 +3,9 @@ package com.project.subject.models;
 import java.io.Serializable;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -33,12 +36,12 @@ public class Module implements Serializable{
 	@NotNull(message="name  cannot be null")
 	String nom;
 
-@ManyToOne(cascade = CascadeType.ALL)
+@JsonBackReference  @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="niveau_id")
     private Niveau niveau;
 
 
-	 @OneToMany(mappedBy = "module", 
+	 @JsonManagedReference  @OneToMany(mappedBy = "module", 
 	            cascade = CascadeType.ALL)
 	  Set<Matiere> matieres;
 	 

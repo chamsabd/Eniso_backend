@@ -6,6 +6,10 @@ import java.util.Set;
 
 import org.apache.tomcat.jni.Library;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,10 +35,11 @@ public class CompteRendu {
 String title;
 Date date_creation;
 Date date_fermeture;
-@OneToMany(mappedBy = "compterendu")
+
+@JsonManagedReference  @OneToMany(mappedBy = "compterendu")
     private  Set<StudentCompteRendu> StudentCompteRendu = new HashSet<>();
 
-@ManyToOne
+@JsonBackReference  @ManyToOne
     @JoinColumn(name="matiere_id")
     private Matiere matiere;
 

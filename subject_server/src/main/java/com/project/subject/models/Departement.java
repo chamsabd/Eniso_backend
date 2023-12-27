@@ -2,6 +2,9 @@ package com.project.subject.models;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,9 +25,11 @@ public class Departement {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	 Long id;
     String titre;
-    @OneToMany(mappedBy = "departement")
+     
+    @JsonManagedReference  @OneToMany(mappedBy = "departement")
    private Set<Niveau> niveaux;
-    @OneToMany(mappedBy = "departement")
+ 
+    @JsonManagedReference  @OneToMany(mappedBy = "departement")
    private Set<Prof> profs;
    public Departement(String titre) {
       this.titre = titre;

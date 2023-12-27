@@ -4,6 +4,8 @@ package com.project.subject.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -20,17 +22,18 @@ import lombok.*;
 @AllArgsConstructor    
 @DiscriminatorValue("ROLE_STUDENT")
 public class Student  extends User{
-     @ManyToMany(cascade = CascadeType.ALL)
+  @JsonIgnore  
+  @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "matiere_student", 
       inverseJoinColumns = @JoinColumn(name = "matiere_id", referencedColumnName = "id"), 
       joinColumns = @JoinColumn(name = "student_id", 
       referencedColumnName = "id"))
     private Set<Matiere> matieres;
-
+@JsonIgnore
 @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private Set<StudentCompteRendu> studentcompterendu = new HashSet<>();
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
     private Set<StudentNiveau> student_niveau = new HashSet<>();
 

@@ -3,6 +3,10 @@ package com.project.subject.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,12 +28,15 @@ public class Niveau {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	 Long id;
    String niveau; 
-@ManyToOne()
+
+@JsonBackReference  @ManyToOne()
     @JoinColumn(name="departement_id")
    private Departement departement;
-   @OneToMany(mappedBy = "niveau", cascade = CascadeType.ALL)
+  
+   @JsonManagedReference  @OneToMany(mappedBy = "niveau", cascade = CascadeType.ALL)
     private  Set<StudentNiveau> studentniveau ;
-    @OneToMany(mappedBy = "niveau")
+    
+    @JsonManagedReference  @OneToMany(mappedBy = "niveau")
     private Set<Module> modules;
 
 }

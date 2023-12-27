@@ -3,8 +3,10 @@ package com.project.subject.controllers;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.subject.models.Matiere;
@@ -40,7 +42,7 @@ public class MatiereController {
 Long idNiveau;	
 	}
 
-	 @PostMapping("/all")
+	 @PostMapping("/")
     public ResponseEntity<?> GetMatieres(@RequestBody MC mc ){
         log.info("Received request with idDepartement: {} and idNiveau: {}", mc.idDepartement, mc.idNiveau);
 		List<Matiere> ms=mrepo.getMatieres(mc.idDepartement,mc.idNiveau);
@@ -53,6 +55,12 @@ Long idNiveau;
         return new ResponseEntity<>(ms,HttpStatus.OK);
     }
 
+ @GetMapping("/test/{id}")
+    public Long test(@PathVariable Long id){
+       Optional<Matiere> ms=mrepo.getMatiere(id);
+	   log.info("matiere nom"+ms.get().toString());
+        return id;
+    }
 
 
 @DeleteMapping("/{id}")
