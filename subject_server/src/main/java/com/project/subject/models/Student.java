@@ -23,7 +23,7 @@ import lombok.*;
 @DiscriminatorValue("ROLE_STUDENT")
 public class Student  extends User{
    
-  @ManyToMany(cascade = CascadeType.ALL)
+  @JsonIgnore  @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "matiere_student", 
       inverseJoinColumns = @JoinColumn(name = "matiere_id", referencedColumnName = "id"), 
       joinColumns = @JoinColumn(name = "student_id", 

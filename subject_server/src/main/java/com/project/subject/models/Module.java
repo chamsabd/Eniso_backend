@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -25,7 +26,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor  
 @Entity
-public class Module implements Serializable{
+public class Module implements Serializable {
 	/**
 	 * 
 	 */
@@ -36,18 +37,22 @@ public class Module implements Serializable{
 	@NotNull(message="name  cannot be null")
 	String nom;
 
-  @ManyToOne(cascade = CascadeType.ALL)
+
+	@JsonIgnore 
+  @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name="niveau_id")
     private Niveau niveau;
 
 
-	@JsonIgnore  @OneToMany(mappedBy = "module", 
+	
+	@JsonManagedReference
+	@OneToMany(mappedBy = "module", 
 	            cascade = CascadeType.ALL)
 	  Set<Matiere> matieres;
 	 
 	@Override
 	public String toString() {
-		return "UE [id=" + id + ", nom=" + nom + ", subjects=" + matieres + "]";
+		return "UE [id=" + id + ", nom=" + nom + ", matieres=" + matieres + "]";
 	}
 	public Module(@NotNull(message = "name  cannot be null") String nom) {
 		super();
@@ -65,12 +70,7 @@ public class Module implements Serializable{
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public Set<Matiere> getSubjects() {
-		return matieres;
-	}
-	public void setSubjects(Set<Matiere> subjects) {
-		this.matieres = subjects;
-	}
+
 
 
 

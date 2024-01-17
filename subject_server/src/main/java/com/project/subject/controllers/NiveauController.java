@@ -27,7 +27,7 @@ import com.project.subject.services.NiveauService;
   */
 
 @RestController
-@RequestMapping("/niveaux")
+@RequestMapping("/api/niveaux")
 public class NiveauController {
     @Autowired
 	private NiveauService nrepo;

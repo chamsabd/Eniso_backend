@@ -27,7 +27,7 @@ import com.project.subject.services.DepartementService;
   */
 
 @RestController
-@RequestMapping("/departement")
+@RequestMapping("/api/departement")
 public class DepartementController {
     @Autowired
 	private DepartementService nrepo;

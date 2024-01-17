@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-@RequestMapping("/matieres")
+@RequestMapping("/api/matieres")
 public class MatiereController {
 
 
@@ -47,10 +47,9 @@ public MC(Long idDepartement, Long idNiveau) {
 
 	}
 
-	 @PostMapping("/")
+	 @PostMapping("/all")
     public ResponseEntity<?> GetMatieres(@RequestBody MC mc ){
-        log.info("Received request with idDepartement: {} and idNiveau: {}", mc.idDepartement, mc.idNiveau);
-		List<Matiere> ms=mrepo.getMatieres(mc.idDepartement,mc.idNiveau);
+       List<Matiere> ms=mrepo.getMatieres(mc.idDepartement,mc.idNiveau);
         return new ResponseEntity<>(ms,HttpStatus.OK);
     }
 

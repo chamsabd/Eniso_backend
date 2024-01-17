@@ -27,13 +27,25 @@ import com.project.subject.services.ModuleService;
   */
 
 @RestController
-@RequestMapping("/modules")
+@RequestMapping("/api/modules")
 public class ModuleController {
     @Autowired
 	private ModuleService nrepo;
-	 @GetMapping("/")
-    public ResponseEntity<?> GetModules(){
-        List<Module> ms=nrepo.getModules();
+
+
+	public static class MC {
+		public Long idDepartement;
+	public Long idNiveau;
+	public MC(Long idDepartement, Long idNiveau) {
+		this.idDepartement = idDepartement;
+		this.idNiveau = idNiveau;
+	}	
+	
+		}
+
+	 @PostMapping("/all")
+    public ResponseEntity<?> GetModules(@RequestBody MC mc ){
+        List<Module> ms=nrepo.getModules(mc.idDepartement,mc.idNiveau);
         return new ResponseEntity<>(ms,HttpStatus.OK);
     }
 

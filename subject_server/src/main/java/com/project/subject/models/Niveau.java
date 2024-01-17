@@ -32,10 +32,12 @@ public class Niveau {
     @JoinColumn(name="departement_id")
    private Departement departement;
   
-   @JsonIgnore  @OneToMany(mappedBy = "niveau", cascade = CascadeType.ALL)
+   @JsonIgnore
+     @OneToMany(mappedBy = "niveau", cascade = CascadeType.ALL)
     private  Set<StudentNiveau> studentniveau ;
     
-    @JsonIgnore  @OneToMany(mappedBy = "niveau")
+    @JsonIgnore 
+     @OneToMany(mappedBy = "niveau")
     private Set<Module> modules;
 
 }
