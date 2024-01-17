@@ -22,8 +22,8 @@ return moduleRepository.save(m);
 public void deleteModule(Long id){
  moduleRepository.deleteById(id);
 }
-public List<Module> getModules(){
-return moduleRepository.findAll();
+public List<Module> getModules(Long idDepartement,Long idNiveau){
+return moduleRepository.findAll(idDepartement,idNiveau);
 }
 
 public Optional<Module> getModule(Long id){

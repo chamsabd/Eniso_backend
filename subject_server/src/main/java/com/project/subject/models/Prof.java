@@ -2,6 +2,11 @@ package com.project.subject.models;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -18,11 +23,12 @@ import lombok.*;
 @AllArgsConstructor  
 @DiscriminatorValue("ROLE_PROF")
 public class Prof extends User {
-   
- @OneToMany(mappedBy = "prof")
+  
+  @JsonIgnore
+   @OneToMany(mappedBy = "prof",cascade = CascadeType.ALL)
    private Set<Matiere> matieres;
 
-   @ManyToOne
+  @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="departement_id")
    private Departement departement;
 

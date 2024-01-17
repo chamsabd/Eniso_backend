@@ -2,6 +2,9 @@ package com.project.subject.models;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,13 +20,19 @@ import lombok.*;
 @AllArgsConstructor  
 @Entity
 public class Departement {
-   @Id
+  
+@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	 Long id;
     String titre;
-    @OneToMany(mappedBy = "departement")
+     
+    @JsonIgnore  @OneToMany(mappedBy = "departement")
    private Set<Niveau> niveaux;
-    @OneToMany(mappedBy = "departement")
+ 
+   @JsonIgnore  @OneToMany(mappedBy = "departement")
    private Set<Prof> profs;
+   public Departement(String titre) {
+      this.titre = titre;
+   }
     
 }
